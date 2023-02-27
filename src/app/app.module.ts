@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { CoreModule } from './core/core.module';
+import { RedditService } from './shared/services/reddit.service';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule,
   ],
-  providers: [],
+  providers: [
+    RedditService,
+  ],
+  exports: [CoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
