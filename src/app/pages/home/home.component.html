@@ -1,9 +1,9 @@
 <div class="container">
-  <form [formGroup]="formGroup">
-     <mat-form-field appearance="outline" class="full-width">
+  <form class="p-5">
+     <mat-form-field appearance="outline" class="w-100">
       <mat-label>Subreddit</mat-label>
       <mat-icon matPrefix>search</mat-icon>
-      <input matInput placeholder="Subreddit..." type="text" formControlName="subReddit">
+      <input matInput placeholder="Subreddit..." type="text" [formControl]="formGroup">
     </mat-form-field>
   </form>
 </div>

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { RedditService } from 'src/app/shared/services/reddit.service';
 
 @Component({
@@ -8,14 +8,18 @@ import { RedditService } from 'src/app/shared/services/reddit.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  formGroup!: FormGroup;
-  public redditService = inject(RedditService);
+  formGroup!: FormControl;
+  private readonly redditService = inject(RedditService);
 
   constructor(
     private formBuilder: FormBuilder
   ) {
-    this.formGroup = formBuilder.group({
-      subReddit: ['']
-    });
+    this.formGroup = new FormControl('gifs');
+
+    this.onChange();
+  }
+
+  onChange() {
+    this.redditService.getGifs(this.formGroup).subscribe(a => console.log(a));
   }
 }
